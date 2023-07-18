@@ -23,6 +23,7 @@ class LinkedList:
         while current:
             print(current.val)
             current = current.next 
+            
 
                
 LinkedList =  LinkedList()
