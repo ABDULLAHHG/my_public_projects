@@ -75,14 +75,19 @@ void printPostOrder(Node* Tree){
 
 }
 
-void clear(Node* Tree){
-    if (Tree == nullptr){
+void clear(Node* node){
+    if (node == nullptr){
         return;
     }
-    clear(Tree->left);
-    clear(Tree->right);
-    std::cout<<"Node deleted "<<Tree->val<<std::endl;
-    delete Tree;
+    clear(node->left);
+    clear(node->right);
+    std::cout<<"Node deleted "<<node->val<<std::endl;
+
+    if (node == root){
+        root = nullptr;
+    }
+
+    delete node;
 
 }
 
@@ -91,12 +96,17 @@ int main(){
 
 buildTree(new int[]{2,3,4,5,1,6,7,8,10,19},10);
 
+// Print Binary Tree In-Order , Pre-Order , Post-order
 printInOrder(root);
 std::cout<<std::endl;
+
 printPreOrder(root);
 std::cout<<std::endl;
+
 printPostOrder(root);
 std::cout<<std::endl;
+
+// delete Binary Tree 
 clear(root);
 
 }
