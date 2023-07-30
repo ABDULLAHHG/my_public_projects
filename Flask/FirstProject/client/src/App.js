@@ -21,6 +21,19 @@ function App() {
 
   };
 
+  const [imageSrc, setImageSrc] = useState('');
+  const handleSaveClick = () => {
+    fetch('/save_selected_value', {
+      method:'POST',
+      headers: {
+        'Content-Type':'application/json'},
+        body:JSON.stringify({selectedValue})
+      }).then(response => response.json()).then(data =>{
+        setImageSrc(data.URL)
+      });
+  };
+
+
 
   return (
 
@@ -35,19 +48,8 @@ function App() {
     </select>
     
 )}
-    <button onClick={() => {
-          console.log(selectedValue);
-
-        fetch('/save_selected_value', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          
-          body: JSON.stringify({ selectedValue })
-        });
-  }}>Save</button>
-
+      <button onClick={handleSaveClick}>Save</button>
+      {imageSrc && <img src={imageSrc} alt="Image"/>}
 </div>
     );
 }
