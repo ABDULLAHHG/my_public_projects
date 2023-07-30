@@ -15,16 +15,19 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {(typeof data.names === 'undefined')?(
+
+<div>
+    {(typeof data.names === 'undefined')?(
       <p>Loading...</p>
-    ):(
-      data.names.map((name , i )=>(
-      <p key={i}>{name}</p>
-      ))
-    )}
-    </div>
-  );
+      ):(
+    <select>{
+         (
+    data.names.map((name , i )=>(
+      <option key={i}>{name}</option>)))}
+    </select>
+)}
+</div>
+    );
 }
 
 export default App;
