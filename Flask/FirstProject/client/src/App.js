@@ -22,6 +22,10 @@ function App() {
   };
 
   const [imageSrc, setImageSrc] = useState('');
+  const [Price, SetPrice] = useState('');
+  const [Ratings, SetRatings] = useState('');
+  const [Corpus, SetCorpus] = useState('');
+
   const handleSaveClick = () => {
     fetch('/save_selected_value', {
       method:'POST',
@@ -30,6 +34,9 @@ function App() {
         body:JSON.stringify({selectedValue})
       }).then(response => response.json()).then(data =>{
         setImageSrc(data.URL)
+        SetPrice(data.Price)
+        SetRatings(data.Ratings)
+        SetCorpus(data.Corpus)
       });
   };
 
@@ -50,9 +57,15 @@ function App() {
 )}
       <button onClick={handleSaveClick}>Save</button>
       {imageSrc && <img src={imageSrc} alt="Image"/>}
+      <p>{Corpus}</p>
+      <p>{Price}</p>
+      <p>{Ratings}</p>
+
 </div>
+
     );
 }
+
 
 export default App;
 
