@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
+
   const [data, setData] = useState([{}]);
+  const [selectedValue, setSelectedValue] = useState('');
 
   useEffect(() => {
     fetch("/names").then(
@@ -9,10 +11,16 @@ function App() {
     ).then(
       data => {
         setData(data);
-        console.log(data);
       }
     );
   }, []);
+
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+
+  };
+
 
   return (
 
@@ -20,14 +28,31 @@ function App() {
     {(typeof data.names === 'undefined')?(
       <p>Loading...</p>
       ):(
-    <select>{
+    <select value={selectedValue} onChange={handleSelectChange} >{
          (
     data.names.map((name , i )=>(
-      <option key={i}>{name}</option>)))}
+      <option value={name}  key={i}>{name}</option>)))}
     </select>
+    
 )}
+    <button onClick={() => {
+          console.log(selectedValue);
+
+        fetch('/save_selected_value', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          
+          body: JSON.stringify({ selectedValue })
+        });
+  }}>Save</button>
+
 </div>
     );
 }
 
 export default App;
+
+
+
