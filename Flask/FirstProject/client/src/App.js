@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./App.css"
 
-function App() {
+import {Header , Footer , Container} from './Components/index'
+
+function App (){
 
   const [data, setData] = useState([{}]);
   const [selectedValue, setSelectedValue] = useState('');
@@ -42,32 +45,54 @@ function App() {
 
 
 
-  return (
 
-<div>
+
+
+  return(
+<>    
+
+
+
+  <>
+
+      <Header text={selectedValue} url={imageSrc}/>
+      <Container>hi</Container>
+      <Footer/>
+
+
+  </>
+
+
+
+
+  <div>
     {(typeof data.names === 'undefined')?(
       <p>Loading...</p>
       ):(
     <select value={selectedValue} onChange={handleSelectChange} >{
+    
          (
+          
     data.names.map((name , i )=>(
       <option value={name}  key={i}>{name}</option>)))}
     </select>
     
 )}
+      <div>
       <button onClick={handleSaveClick}>Save</button>
+ 
       {imageSrc && <img src={imageSrc} alt="Image"/>}
+      </div>
       <p>{Corpus}</p>
       <p>{Price}</p>
       <p>{Ratings}</p>
 
-</div>
 
-    );
+  </div>
+
+
+</>
+
+  );
 }
-
-
-export default App;
-
-
-
+export default  App;
