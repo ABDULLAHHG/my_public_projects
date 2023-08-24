@@ -1,6 +1,10 @@
 from flask import Flask , render_template
 from flask_socketio import SocketIO , send
+from flask import make_response
+import os
 
+root_dir = os.path.dirname(os.path.abspath(__file__))
+print(root_dir)
 
 app = Flask(__name__ )
 app.config['SECRET'] = '1234'
@@ -16,5 +20,7 @@ def handle_message(message):
 def index():
     return render_template('index.html')
 
+    
+
 if __name__ == "__main__":
-    socketio.run(app , host= "localhost")
+    socketio.run(app , host= "0.0.0.0")
