@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js -->
+    <!-- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js -->
+<head>
+
+    <meta charset="UTF-8">
+    <title>Online Web Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js" integrity="sha512-zoJXRvW2gC8Z0Xo3lBbao5+AS3g6YWr5ztKqaicua11xHo+AvE1b0lT9ODgrHTmNUxeCw0Ry4BGRYZfXu70weg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var socket = io.connect("http://localhost:5000")
+        socket.on('connect' , function(){
+            socket.send("User connected!");
+        });
+        socket.on('message' , function(data){
+            $("#messages").append($('<p>').text(data));
+        });
+        $('#sendBtn').on('click' , function(){
+            socket.send($('#username').val() + ': ' + $('#message').val());
+            $('#message').val('');
+        });
+    })
+</script>
+<div id ="messages">
+</div>
+    <input type="text" id="username" placeholder="username" required>
+    <input type="text" id="message" placeholder="message" required>
+    <button id="sendBtn">Send</button>
+
+
+
+</body>
+</html>
