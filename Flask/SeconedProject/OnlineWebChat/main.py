@@ -3,9 +3,6 @@ from flask_socketio import SocketIO , send
 from flask import make_response
 import os
 
-root_dir = os.path.dirname(os.path.abspath(__file__))
-print(root_dir)
-
 app = Flask(__name__ )
 app.config['SECRET'] = '1234'
 socketio = SocketIO(app, cors_allowed_origins = '*')
