@@ -31,7 +31,7 @@ function App (){
 
   const handleSaveClick = () => {
     fetch('/save_selected_value', {
-      method:'POST',
+      method:['POST'],
       headers: {
         'Content-Type':'application/json'},
         body:JSON.stringify({selectedValue})

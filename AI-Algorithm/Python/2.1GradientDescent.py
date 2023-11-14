@@ -1,18 +1,19 @@
 import numpy as np 
 import matplotlib.pyplot as plt 
+import random
 
 def y_function(x):
-    return np.sin(x)
+    return np.sin(2*x)
 
 def y_derivative(x):
-    return np.cos(x)
+    return 2*np.cos(2*x)
 
 x = np.arange(-5,5,0.1)
 y = y_function(x)
+n = random.randint(-5,5)
+current_pos = (n , y_function(n))
 
-current_pos = (1.5 , y_function(1.5))
-
-learning_rate = 0.01
+learning_rate = 0.1
 
 for _ in range(1000):
     new_x = current_pos[0] - y_derivative(current_pos[0]) * learning_rate
