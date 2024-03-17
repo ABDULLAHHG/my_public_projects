@@ -1,0 +1,17 @@
+Types of Data Structures 
+1 - Linear 
+ A - Array
+ B - LinkedList 
+ C - Stack 
+ D - Queue
+2 - Non-Linear 
+ A - Tree 
+ B - Graph 
+
+1 - Linear : its a type of data structure that stores the data linearly or sequentially 
+
+2 - Non-Linear : its a form of data structure where the data elements dont stay arranged linearly or sequentially.
+
+
+
+
