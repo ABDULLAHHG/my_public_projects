@@ -110,3 +110,15 @@ if st.sidebar.button("Solve"):
         
         st.plotly_chart(fig)
         st.write(f"Optimal Value (Z) = {best_val:.2f} at (x, y) = ({best_point[0]:.2f}, {best_point[1]:.2f})")
+else:
+    st.text("""
+Please Check the sidebar and choose
+the formula and run it,
+or run the defualt formula 
+
+you can run the formula by press solve button
+at the end of the sidebar
+
+its highly recommanded to visit 
+the website using your laptop
+or desktop""")
